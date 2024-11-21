@@ -1,0 +1,33 @@
+Benchmark: Batch Sizes
+
+On CPU
+------
+
+The time taken by the single-threaded execution increases as the batch size grows. 
+    - This is expected because larger batches require more computation, and with only one thread available, the system can only handle one task at a time.
+    
+For small batch sizes (1, 10), multi-threading with multiple threads (2, 4, 8, 10) shows significant improvement in performance. 
+    - For example, with batch size 1, the time drastically drops from 0.0060 seconds (single-threaded) to 0.0003 seconds with 4 or more threads.
+
+However, as the batch size increases (for example, 500, 1000, and 10000), the benefit of multi-threading starts to diminish.
+    - For batch size 500 and above, the time for multi-threading (2 threads or more) remains quite similar. This suggests that the workload may be large enough or structured in a way that adding more threads does not lead to a proportional decrease in time.
+    - In some cases, the performance of 4 threads is even worse than 2 or 1 threads, likely due to overhead from managing threads or contention between them.
+    - At batch size 1000, the reduction in time is smaller when increasing threads from 1 to 2 or 4 (from 0.3083 to 0.2967 seconds).
+    - At batch size 10000, there is almost no improvement with more than 2 threads. The times stay quite stable even as you increase the number of threads (ranging between 95.4 and 95.9 seconds for 2-10 threads).
+
+
+Small Batch Sizes (1, 10):
+    - For small batches, multi-threading is highly effective because there is relatively little work to do, and multiple threads can process it in parallel quickly. This can lead to near-optimal performance when 4 or more threads are used.
+
+Medium Batch Sizes (50-500):
+    - For medium-sized batches, the multi-threading benefit starts to plateau. The system is still able to handle some concurrency, but as batch size increases, the bottleneck moves from CPU computation to other factors such as memory bandwidth or I/O constraints. The efficiency gain from adding threads diminishes.
+    
+Large Batch Sizes (1000, 10000):
+    - For large batch sizes, adding more threads does not result in much improvement due to the increasing overhead of managing multiple threads and the fact that the computation required for large batches may be inherently difficult to split across threads efficiently. The overhead of creating, scheduling, and synchronizing multiple threads may outweigh the benefits of parallel execution.
+    
+
+In summary, single-threaded performance increases with batch size, but multi-threading is most beneficial for smaller batches. Multi-threading significantly speeds up processing for small batches, but as batch size increases, the time benefit from adding more threads becomes smaller, and eventually, adding threads has little effect. Overall, the system reaches a point of diminishing returns with larger batch sizes and higher thread counts, possibly due to resource limits such as memory, disk I/O, or thread management overhead.
+
+
+
+
