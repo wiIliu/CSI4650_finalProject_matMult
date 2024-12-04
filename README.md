@@ -1,8 +1,8 @@
 # CPU and GPU Performance for Matrix Multiplication 
 
-Course: CSI 4650: Parallel and Distributed Computation, Fall 2024
-Group # 6: Willow Connelly, Rumana Yeasmin, Emma Gabos
-Date: 12-05-24
+Course: CSI 4650: Parallel and Distributed Computation, Fall 2024<br>
+Group # 6: Willow Connelly, Rumana Yeasmin, Emma Gabos<br>
+Date: 12-05-24<br>
 
 ---
 ### Project Overview
