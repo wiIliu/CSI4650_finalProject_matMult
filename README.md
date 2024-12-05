@@ -1,7 +1,7 @@
 # CPU and GPU Performance for Matrix Multiplication 
 
 Course: CSI 4650: Parallel and Distributed Computation, Fall 2024<br>
-Group # 6: Willow Connelly, Rumana Yeasmin, Emma Gabos<br>
+Group 6: Willow Connelly, Rumana Yeasmin, Emma Gabos<br>
 Date: 12-05-24<br>
 
 ---
@@ -61,7 +61,7 @@ Provides access to GPUs for parallel computation experiments.<br>
 CPU: Intel Xeon<br>
 Physical cores: 1<br>
 Logical processors (threads): 2<br>
-GPU: NVIDIA Tesla T4<br>
+GPU: NVIDIA Tesla T4 - 2560 CUDA cores<br>
 
 ##### Libraries:
 PyTorch:<br>
@@ -69,18 +69,6 @@ PyTorch:<br>
   Used to leverage CUDA for GPU-based acceleration.<br>
 
 
----
-### Experimental Results - Transfering Matrix
-
-This test measured the time taken to transfer matrices between the CPU and GPU.<br>
-Unlike previous tests, tensors were explicitly moved between devices instead of being generated directly on the target processor.<br>
-
-Results:
-<br>CPU to GPU transfer time: ~1.0 ms.
-<br>GPU to CPU transfer time: ~0.88 ms.
-<br>Highlights the importance of minimizing data transfers to avoid negating performance gains from GPU parallelization 
-
----
 
 ### Challenges 
 - Figuring out Google Colab’s environment specs
